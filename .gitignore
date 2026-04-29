@@ -1,0 +1,9 @@
+node_modules
+dist
+out
+.DS_Store
+.eslintcache
+*.log*
+.gguf
+.txt
+/app/resources/wikitext-2-raw-v1

@@ -1,0 +1,21 @@
+# chat process (GGUF via llama-cpp-python)
+# Windows CUDA wheels: install with --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu124
+# (see app/scripts/setup_python_env_win.ps1)
+llama-cpp-python==0.3.4
+gguf
+
+# retrieve + ingest
+lancedb
+sentence-transformers
+
+# ingest: doc loading
+pypdf
+python-docx
+beautifulsoup4
+striprtf
+annotated-types
+
+huggingface_hub>=0.23.0
+
+# optional: langchain for chunking (or use simple split in ingest)
+# langchain langchain-community

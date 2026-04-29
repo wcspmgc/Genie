@@ -1,0 +1,9 @@
+{
+  "id": "chat-uuid-example",
+  "messages": [
+    { "id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d", "role": "user", "content": "Hello, how are you?" },
+    { "id": "b2c3d4e5-f6a7-5b6c-9d0e-1f2a3b4c5d6e", "role": "assistant", "content": "I'm doing well, thanks for asking. How can I help you today?", "model": "Meta-Llama-3.1-8B-Instruct-Q6_K.gguf" },
+    { "id": "c3d4e5f6-a7b8-6c7d-0e1f-2a3b4c5d6e7f", "role": "user", "content": "Tell me about the weather." },
+    { "id": "d4e5f6a7-b8c9-7d8e-1f2a-3b4c5d6e7f8a", "role": "assistant", "content": "I don't have access to real-time weather data, but I can help you find resources or explain weather concepts.", "model": "Meta-Llama-3.1-8B-Instruct-Q6_K.gguf" }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "_comment": "Genie encrypted manifest (max 2 levels deep). corpora = collections; each has sources (file or folder paths).",
+  "user": {
+    "name": "Example User",
+    "email": "user@example.com"
+  },
+  "settings": {
+    "appearance": {
+      "textSize": "small",
+      "theme": "light"
+    },
+    "inference": {
+      "file": "Meta-Llama-3.1-8B-Instruct-Q6_K.gguf",
+      "contextLength": 50000,
+      "maxTokens": 1024,
+      "temperature": 0.3,
+      "topP": 0.9,
+      "topK": 40
+    },
+    "rag": {
+      "chunkSize": 512,
+      "overlapPercent": 10,
+      "method": "fixed_256_o10",
+      "searchMethod": "vector",
+      "embeddingModel": "all-MiniLM-L6-v2",
+      "numChunks": 30,
+      "rerankerModel": "ms-marco-MiniLM-L-6-v2",
+      "rerankerTopK": 10,
+      "useRewriteQuery": false,
+      "rewriterModel": ""
+    }
+  },
+  "chats": [
+    { "id": "chat-uuid-1", "title": "Sample Chat", "corpusId": "corpus-uuid-1", "lastModified": "2026-01-01T12:00:00.000Z" }
+  ],
+  "corpora": [
+    {
+      "id": "corpus-uuid-1",
+      "name": "Accounting Files 2024",
+      "tableName": "table_corpus_uuid_1",
+      "status": "ready",
+      "totalSizeBytes": 1073741824,
+      "approxTokens": 43000,
+      "settings": {
+        "chunkSize": 512,
+        "overlap": 50,
+        "embedder": "all-MiniLM-L6-v2",
+        "method": "fixed_256_o10"
+      },
+      "sources": [
+        {
+          "type": "folder",
+          "path": "/home/user/accounting files 2024",
+          "fileCount": 42,
+          "scannedAt": "2026-03-10T12:00:00.000Z"
+        },
+        {
+          "type": "file",
+          "path": "/home/user/downloads/late_invoice.pdf",
+          "fileCount": 1,
+          "scannedAt": "2026-03-16T10:00:00.000Z"
+        }
+      ]
+    }
+  ]
+}

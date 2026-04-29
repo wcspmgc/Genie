@@ -1,0 +1,1 @@
+Many documents from the CUAD (Contract Understanding Atticus Dataset) were used, these are just a few examples plus a machine learning paper.

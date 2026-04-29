@@ -1,0 +1,32 @@
+{
+  "appearance": {
+    "textSize": "small",
+    "theme": "light"
+  },
+  "inference": {
+    "file": "Meta-Llama-3.1-8B-Instruct-Q6_K.gguf",
+    "contextLength": 50000,
+    "maxTokens": 1024,
+    "temperature": 0.3,
+    "topP": 0.9,
+    "topK": 40
+  },
+  "modelDefaults": {
+    "llmHfRepo": "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF",
+    "llmFilename": "Meta-Llama-3.1-8B-Instruct-Q6_K.gguf",
+    "embedderHfRepo": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedderFolderName": "all-MiniLM-L6-v2"
+  },
+  "rag": {
+    "chunkSize": 512,
+    "overlapPercent": 10,
+    "method": "fixed_256_o10",
+    "searchMethod": "vector",
+    "embeddingModel": "all-MiniLM-L6-v2",
+    "numChunks": 30,
+    "rerankerModel": "ms-marco-MiniLM-L-6-v2",
+    "rerankerTopK": 10,
+    "useRewriteQuery": false,
+    "rewriterModel": ""
+  }
+}
