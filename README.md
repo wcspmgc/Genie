@@ -1,6 +1,6 @@
 # Genie
 
-Genie is a desktop Retrieval Augmented Generation (RAG) app, for locally querying your documents with AI.
+Genie is a desktop Retrieval Augmented Generation (RAG) app, for locally querying your documents with AI.  
 Welcome to my final year project showcase!
 
 ![Genie hero screenshot](app_images/hero.png)
