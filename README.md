@@ -1,8 +1,10 @@
-# Genie
-Local Retrieval Augmented Generation (RAG) desktop app and Machine Learning Research
+![Genie hero screenshot](app_images/hero.png)
 
-Please see demo video:
-https://www.youtube.com/watch?v=CVPxvShem5I
+## Screenshots
 
-
-
+| | |
+|---|---|
+| ![Documents screen](app_images/readme_grid/documents.png) | ![Search screen](app_images/readme_grid/search.png) |
+| ![Settings screen](app_images/readme_grid/settings.png) | ![Light chat screen](app_images/readme_grid/chatlight.png) |
+| ![Dark chat screen](app_images/readme_grid/chatdarkchunk.png) | ![Models screen](app_images/readme_grid/models.png) |
+| ![Signup screen](app_images/readme_grid/signup.png) | ![Login screen](app_images/readme_grid/loginlight.png) |
