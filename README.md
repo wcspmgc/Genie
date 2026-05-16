@@ -1,10 +1,24 @@
+# Genie
+
 ![Genie hero screenshot](app_images/hero.png)
 
 ## Screenshots
 
-| | |
-|---|---|
-| ![Documents screen](app_images/readme_grid/documents.png) | ![Search screen](app_images/readme_grid/search.png) |
-| ![Settings screen](app_images/readme_grid/settings.png) | ![Light chat screen](app_images/readme_grid/chatlight.png) |
-| ![Dark chat screen](app_images/readme_grid/chatdarkchunk.png) | ![Models screen](app_images/readme_grid/models.png) |
-| ![Signup screen](app_images/readme_grid/signup.png) | ![Login screen](app_images/readme_grid/loginlight.png) |
+<table border="0">
+  <tr>
+    <td width="50%"><img src="app_images/readme_grid/documents.png" alt="Documents screen"></td>
+    <td width="50%"><img src="app_images/readme_grid/search.png" alt="Search screen"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="app_images/readme_grid/settings.png" alt="Settings screen"></td>
+    <td width="50%"><img src="app_images/readme_grid/chatlight.png" alt="Light chat screen"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="app_images/readme_grid/chatdarkchunk.png" alt="Dark chat screen"></td>
+    <td width="50%"><img src="app_images/readme_grid/models.png" alt="Models screen"></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="app_images/readme_grid/signup.png" alt="Signup screen"></td>
+    <td width="50%"><img src="app_images/readme_grid/loginlight.png" alt="Login screen"></td>
+  </tr>
+</table>
