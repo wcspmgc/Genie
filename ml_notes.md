@@ -38,7 +38,7 @@ Cross encoders improve upon the inferior initial bi-encoder rankings. So some im
 _For further results see below._
 
 ### Generation Experiments
-For the secondary generation experiments, I tested the effect of the number of chunks and the position of relevant/"gold" chunks in the model's context. I found that, expectedly, as you fill an LLM's context with more chunks- its accuracy decreases. Additionally, I found a primacy boost- the LLM was better able to find the relevant information from its context when the gold chunk was right at the beginning, rather than in the middle or at the end. This contrasts with the expected U-shaped lost in the middle curve.
+For the secondary generation experiments, I tested the effect of the number of chunks and the position of relevant/"gold" chunks in the model's context. I found that, expectedly, as you fill an LLM's context with more chunks- its accuracy decreases. Additionally, I found a **primacy boost**- the LLM was better able to find the relevant information from its context when the gold chunk was right at the beginning, rather than in the middle or at the end. This contrasts with the expected U-shaped _lost in the middle_ curve.
 
 
 ## Testing pipeline diagrams
