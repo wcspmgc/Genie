@@ -31,9 +31,9 @@ Further testing was performed with **reranking** using the **MiniLM Marco** (22M
 Reranking proved to be extremely effective, for example, a **22M** parameter embedder (MiniLM) plus a **22M** parameter cross-encoder (MiniLM-Marco) far **outperformed** the **300M parameter embedder** embeddingGemma _without reranking_. So adding a reranker is a more effective use of resources than enlarging your embedder.
 
 Why is using a cross-encoder so much more effective than only using a bi-encoder pipeline?
-Cross-encoders compare via self-attention with the concatenated sequence (early interaction); Bi-encoders embed each sequence then compare the resultant vectors (late interaction).
+Cross-encoders compare via self-attention within the concatenated sequence (_early interaction_); Bi-encoders embed each sequence then compare the resultant vectors (_late interaction_).
 
-Cross encoders improve upon the inferior initial bi-encoder rankings. So some important information seems to be taken into account in cross-encoding (i.e. token-to-token interactions) that is lost when compressing (e.g. to a single _768 dimension fp32 vector_ each).
+Cross encoders improve upon the inferior initial bi-encoder rankings. So some important information seems to be taken into account in cross-encoding (i.e. _token-to-token interactions_) that is lost when compressing (e.g. to a single _768 dimension fp32 vector_ each).
 
 _For further results see below._
 
