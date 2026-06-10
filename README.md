@@ -13,7 +13,7 @@ Welcome to my final year project showcase!
 
 ## Machine Learning Research
 
-As well as building Genie, I also performed Machine Learning research to optimize the pipeline and hyperparameters.
+As well as building Genie, I also performed Machine Learning research to optimize the retrieval and generation pipelines and hyperparameters: 
 [Please see ml_notes.md](ml_notes.md)
 
 ## App Screenshots
@@ -91,4 +91,5 @@ Many industries handle sensitive documents that cannot simply be sent to externa
 
 Other sectors, such as defence, advanced engineering, and critical infrastructure, may also use offline or air-gapped networks. In those environments, teams still need to search and query large document collections, but the system must run locally without relying on an external AI service.
 
+[Please see machine learning findings here.md](ml_notes.md)
 
