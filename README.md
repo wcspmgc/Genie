@@ -86,7 +86,7 @@ Document ingestion, retrieval, reranking, and answer generation all run on the u
 
 ## Motivation
 
-There are two main **reasons** to run RAG and LLM chat _locally_: **confidentiality/compliance**, and **offline or air-gapped environments**.
+There are two main **reasons** to run RAG and LLM chat _locally_: **confidentiality/compliance**, and **offline or air-gapped** environments.
 
 Many industries handle sensitive documents that cannot simply be sent to external cloud APIs. This includes **legal work**, where documents may be protected by legal professional privilege, and **healthcare**, where patient information is subject to strict **confidentiality** requirements.
 
