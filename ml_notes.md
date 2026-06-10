@@ -2,7 +2,22 @@
 
 ## Overview
 
+I performed AIML research on 2 main RAG topics - retrieval and generation.
+
+### Retrieval Experiments
+For the main retrieval experiments I performed grid search over many combinations of chunking, embedding, enrichment and reranking methods.
+
+
+### Generation Experiments
+For the secondary generation experiments, I tested the effect of the number of chunks and the position of relevant/"gold" chunks in the model's context. I found that, expectedly, as you fill an LLM's context with more chunks- its accuracy decreases. Additionally, I found a primacy boost- the LLM was better able to find the relevant information from its context when the gold chunk was right at the beginning, rather than in the middle or at the end. This contrasts with the expected U-shaped lost in the middle curve.
+
+
+
+
 //mention rerankers and why, attention mechanism
+
+
+
 
 ## Testing pipeline diagrams
 ### Retrieval - effect of chunking/embedding/enrichment methods
