@@ -2,7 +2,7 @@
 
 ## TLDR Conclusions
 
-**Rerankers** are highly effective, more important than difference among embedders, enrichments have little effect. **2 stage bi-encoder, cross-encoder pipeline** strongly validated.
+**Rerankers** are highly **effective**, more important than difference among embedders, enrichments have little effect. **2 stage bi-encoder, cross-encoder pipeline** strongly validated.
 
 Minor **swamping** and **primacy boost** observed with respect to LLM context.
 
@@ -13,7 +13,7 @@ I performed AIML research on 2 main RAG topics - retrieval and generation.
 ### Retrieval Experiments
 For the main retrieval experiments I performed **grid search** over **~50 combinations of chunking, embedding, enrichment and reranking methods**.
 
-Mergers and Acquisitions contracts from the **CUAD dataset** (ultimately from EDGAR the SEC's online database) were used as the corpus. 
+Mergers and Acquisitions contracts from the **CUAD dataset** (ultimately from EDGAR the SEC's online database) were used as the corpus. (_see References at end of page_)
 
 Documents were **chunked** at various lengths (**from 64 to 1024 tokens, mainly 256**) by various methods (fixed token number, semantically, and by sentence/paragraph boundaries).
 
@@ -31,21 +31,14 @@ Further testing was performed with reranking using the MiniLM Marco (22M) cross-
 Reranking proved to be extremely effective, for example, a 22M parameter Embedder (MiniLM) plus a 22M parameter cross-encoder (MiniLM-Marco) far outperformed the 300M parameter embedder embeddingGemma without reranking. So adding a reranker is a more effective use of resources than enlarging your embedder.
 
 Why is using a cross-encoder so much more effective than only using a biencoder pipeline?
-A cross encoder is a sequence comparison architecture where sequences are concatenated then compared with self-attention. By contrast, in a biencoder architecture, both sequences are embedded to a single vector each, which are then compared via cosine (=length normalized dot). 
+A **cross encoder** is a sequence comparison architecture where sequences are concatenated then compared with self-attention. By contrast, in a bi-encoder architecture, both sequences are embedded to a single vector each, which are then compared via cosine (=length normalized dot). 
 
-So cross encoders perform fine grained token to token ($n^2$) interaction, between query and chunk/document (early interaction),  whereas bi-encoders compress both sequences then compare the resultant vectors (late interaction). Cross encoders improve upon the inferior initial biencoder rankings. So some important information seems to be taken into account in cross-encoding (e.g. how each token affects the meaning of each other) that is lost when compressing (e.g. to a single 768 dimension fp32 vector each).
+**Cross-encoders** perform fine grained **token to token** ($n^2$) **interaction**, between query and chunk/document (**early interaction**),  whereas bi-encoders compress both sequences then compare the resultant vectors (**late interaction**). Cross encoders improve upon the inferior initial biencoder rankings. So some important information seems to be taken into account in cross-encoding (e.g. how each token affects the meaning of each other) that is lost when compressing (e.g. to a single _768 dimension fp32 vector_ each).
 
-For further results see below.
-
+_For further results see below.
+_
 ### Generation Experiments
 For the secondary generation experiments, I tested the effect of the number of chunks and the position of relevant/"gold" chunks in the model's context. I found that, expectedly, as you fill an LLM's context with more chunks- its accuracy decreases. Additionally, I found a primacy boost- the LLM was better able to find the relevant information from its context when the gold chunk was right at the beginning, rather than in the middle or at the end. This contrasts with the expected U-shaped lost in the middle curve.
-
-
-
-
-//mention rerankers and why, attention mechanism
-
-
 
 
 ## Testing pipeline diagrams
