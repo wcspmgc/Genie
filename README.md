@@ -1,6 +1,6 @@
 # Genie
 
-Genie is a desktop Retrieval Augmented Generation (RAG) app for locally querying your documents with AI.  
+**Genie** is a desktop Retrieval Augmented Generation (RAG) app for locally querying your documents with AI.  
 Welcome to my final year project showcase!
 
 ## Demo Video
@@ -43,11 +43,11 @@ The experiments tested chunk sizes, embedding models, enrichment methods, retrie
 </table>
 
 ## Features
-- Chat with local LLM using Retrieval Augmented Generation (RAG)
-- Upload and index documents
-- Search documents using semantic, keyword (BM25), or hybrid retrieval
-- View retrieved source chunks for transparency
-- Configure retrieval and inference settings, including:
+- **Chat** with local LLM using Retrieval Augmented Generation (**RAG**)
+- Upload and index **documents**
+- **Search** documents using semantic, keyword (BM25), or hybrid retrieval
+- View retrieved source **chunks** for transparency
+- Configure retrieval and inference **settings**, including:
   - LLM model (`.gguf`)
   - context window
   - temperature
@@ -62,7 +62,7 @@ The experiments tested chunk sizes, embedding models, enrichment methods, retrie
 
 ## Technical summary
 
-Genie is a local-first RAG desktop app. Uploaded documents are split into chunks, embedded with MiniLM/SBERT, and stored in LanceDB. At query time, relevant chunks are retrieved using semantic, keyword (BM25), or hybrid search, optionally reranked with an MS MARCO MiniLM cross-encoder, and passed to a local GGUF language model through llama.cpp / llama-cpp-python.
+**Genie** is a **local-first RAG desktop app**. Uploaded documents are split into chunks, embedded with **MiniLM/SBERT**, and stored in **LanceDB**. At query time, relevant chunks are retrieved using **semantic, keyword (BM25), or hybrid** search, optionally **reranked** with an **MS MARCO MiniLM cross-encode**r, and passed to a local **GGUF language model** through **llama.cpp** / llama-cpp-python.
 
 Document ingestion, retrieval, reranking, and answer generation all run on the user's machine.
 
