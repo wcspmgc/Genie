@@ -26,9 +26,9 @@ These enriched chunks were then embedded by **3 embedders**- **MiniLM** (23M par
 Embedded questions were used to retrieve chunks from the corpus, by 3 methods- **BM25/keyword**, **semantic** (_cosine/normalized dot product_), **hybrid** (_reciprocal rank fusion_).
 The retrieved chunks, question and ground truth were sent to cloud LLMs for **LLM-as-Judge** evaluation (_recall, precision, hit rate etc._) - in essence judging "_how relevant are the retrieved chunks to the question_". This was done for all combinations of chunking, embedding and enrichment methods.
 
-Further testing was performed with **reranking** using the **MiniLM Marco** (22M) **cross-encoder**. The first 50 chunks were retrieved and reranked with the reranker, then the top 5 reranked chunks were returned.
+Further testing was performed with **reranking** using the **MiniLM Marco** (22M) **cross-encoder**. The first 50 chunks were retrieved and reranked, then the top 5 reranked chunks were returned.
 
-Reranking proved to be extremely effective, for example, a 22M parameter embedder (MiniLM) plus a 22M parameter cross-encoder (MiniLM-Marco) far outperformed the 300M parameter embedder embeddingGemma without reranking. So adding a reranker is a more effective use of resources than enlarging your embedder.
+Reranking proved to be extremely effective, for example, a **22M** parameter embedder (MiniLM) plus a **22M** parameter cross-encoder (MiniLM-Marco) far **outperformed** the** 300M parameter embedder **embeddingGemma _without reranking_. So adding a reranker is a more effective use of resources than enlarging your embedder.
 
 Why is using a cross-encoder so much more effective than only using a bi-encoder pipeline?
 Cross-encoders compare via self-attention with the concatenated sequence (early interaction); Bi-encoders embed each sequence then compare the resultant vectors (late interaction).
