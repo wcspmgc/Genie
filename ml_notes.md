@@ -2,6 +2,8 @@
 
 ## Overview
 
+//mention rerankers and why, attention mechanism
+
 ## Testing pipeline diagrams
 ### Retrieval - effect of chunking/embedding/enrichment methods
 ![Chunk/embed/enrich_architecture](ml_images/chunking.png)
@@ -10,7 +12,7 @@
 # Results
 
 ## Core Retrieval Experiments
-These experiments evaluate the main retrieval pipeline: chunking, embedding, retrieval method, reranking, and retrieval budget.
+These experiments evaluate the main retrieval pipeline: chunking, embedding, retrieval method, reranking, and retrieval budget. Each plot is followed by its explanation.
 ### Chunking, embedding and enrichment
 
 ![Budget retrieval metrics by method](ml_images/results/budget_retrieval_metrics_by_method.png)
@@ -21,6 +23,7 @@ Top left plot shows that for all chunk sizes- increasing the token budget improv
 
 Unnormalized by chunk size, unsurprisingly the largest chunk size (1024 tokens) performs best.
 ![Token-normalized scores](ml_images/results/token_normalized_scores_all.png)
+Normalized for chunk size (i.e. for the same token budget broken up by different chunking methods), the smallest chunks (64 token) do best- i.e. several small chunks have a greater chance of catching the answer, then few bigger ones.
 
 ![Chunk size metrics by embedder](ml_images/results/chunk_size_metrics_by_embedder.png)
 
@@ -33,13 +36,18 @@ Removing the description (contains the name of the Document/Contract) or replaci
 ### Reranking
 
 ![Reranker](ml_images/results/reranker_budget_metrics_by_condition.png)
+Top-left plot is most important. It shows that for both Hybrid and BM25/Keyword search, reranknig significantly improves recall. This was the most notable finding in all research performed- that rerankers are extremely powerful. Note that the least powerful embedder-  the square, miniLM, with reranking is far better than all of the embedders without reranking, both for hybrid and semantic search.
 
 ![Reranker budget recall by method](ml_images/results/reranker_budget_recall_by_method.png)
 
+
+
 ![Reranker budget delta](ml_images/results/reranker_budget_reranker_delta.png)
+
 
 ![Gemma rerank](ml_images/results/gemmarerank.png)
 
+For Gemma (the best embedder, as seen in the embedding tests) reranking improves recall a lot for both hybrid and BM25 search.
 
 
 ## Lost-in-the-Middle / Context Position Experiments
