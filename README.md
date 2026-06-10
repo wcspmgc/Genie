@@ -1,6 +1,6 @@
 # Genie
 
-## The project is completed but the demo repo is currently Work-in-Progress - will be completed in a few days!
+## Project complete, Demo - Work-in-progress
 
 Genie is a desktop Retrieval Augmented Generation (RAG) app for locally querying your documents with AI.  
 Welcome to my final year project showcase!
