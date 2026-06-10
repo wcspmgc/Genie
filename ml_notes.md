@@ -2,7 +2,7 @@
 
 ## TLDR Conclusions
 
-**Rerankers** are highly **effective**, more important than difference among embedders, enrichments have little effect. **2 stage bi-encoder, cross-encoder pipeline** strongly validated.
+**Rerankers** are highly **effective**, more important than differences among embedders, enrichments have little effect. **two stage bi-encoder, cross-encoder pipeline** strongly validated.
 
 Minor **swamping** and **primacy boost** observed with respect to LLM context.
 
@@ -15,7 +15,7 @@ For the main retrieval experiments I performed **grid search** over **~50 combin
 
 Mergers and Acquisitions contracts from the **CUAD dataset** (ultimately from EDGAR the SEC's online database) were used as the corpus. (_see References at end of page_)
 
-Documents were **chunked** at various lengths (**from 64 to 1024 tokens, mainly 256**) by various methods (fixed token number, semantically, and by sentence/paragraph boundaries).
+Documents were **chunked** at various lengths (**from 64 to 1024 tokens, most often 256**) by various methods (fixed token number, semantically, and by sentence/paragraph boundaries).
 
 The chunks were then passed to cloud LLMs (_GPT-4o-mini, Gemini-Flash-2.5_) for **synthetic question generation** (direct, indirect and informal questions that a chunk answers), as well as for summaries and atomic statements.
 
@@ -61,11 +61,11 @@ Top left plot shows that for all chunk sizes- increasing the token budget improv
 
 Unnormalized by chunk size, unsurprisingly the largest chunk size (1024 tokens) performs best.
 ![Token-normalized scores](ml_images/results/token_normalized_scores_all.png)
-Normalized for chunk size (i.e. for the same token budget broken up by different chunking methods), the smallest chunks (64 token) do best- i.e. several small chunks have a greater chance of catching the answer, then few bigger ones.
+Normalized for chunk size (i.e. for the same token budget broken up by different chunking methods), the smallest chunks (64 token) do best- i.e. several small chunks have a greater chance of catching the answer, than few bigger ones.
 
 ![Chunk size metrics by embedder](ml_images/results/chunk_size_metrics_by_embedder.png)
 
-EmbeddingGemma300M was found to be the best embedder, followed by miniLM and GTE-ModertBERT.
+EmbeddingGemma300M was found to be the best embedder, followed by miniLM and GTE-ModernBERT.
 
 ![Fixed 256-token surface metrics by style](ml_images/results/fixed_256_surface_metrics_by_style.png)
 
@@ -99,7 +99,7 @@ These experiments investigate whether the accuracy of the LLM's answer changes d
 | Plot | Description |
 |---|---|
 | ![SWAMP evaluation plot](ml_images/results/swamp_eval_plot.png) | With more chunks - the LLM gets "swamped" and accuracy decreases, mainly due to abstentions e.g. "the answer is not provided in the given context". |
-| ![Primacy boost](ml_images/results/primacyboost.png) | A modest primacy boost was found, moreso than the classic U shaped lost-in-the middle-curve. (i.e. The model is more accurate with the gold chunk at the start) |
+| ![Primacy boost](ml_images/results/primacyboost.png) | A modest primacy boost was found, moreso than the classic U-shaped lost-in-the-middle curve. (i.e. _The model is more accurate with the gold chunk at the start._) |
 
 
 ## References
