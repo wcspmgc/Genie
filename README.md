@@ -14,7 +14,7 @@ Welcome to my final year project showcase!
 ## Machine Learning Research
 
 As well as building Genie, I also performed Machine Learning research to optimize the retrieval and generation pipelines and hyperparameters: 
-[Please see ml_notes.md](ml_notes.md)
+[Please see Machine Learning Research Summary here](ml_notes.md)
 
 ## App Screenshots
 
