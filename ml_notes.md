@@ -2,26 +2,26 @@
 
 ## TLDR Conclusions
 
-Rerankers are highly effective, more important than difference among embedders, enrichments have little effect. 2 stage bi-encoder, cross-encoder pipeline strongly validated.
+**Rerankers** are highly effective, more important than difference among embedders, enrichments have little effect. **2 stage bi-encoder, cross-encoder pipeline** strongly validated.
 
-Minor swamping and Primacy boost observed with respect to LLM context.
+Minor **swamping** and **primacy boost** observed with respect to LLM context.
 
 ## Overview
 
 I performed AIML research on 2 main RAG topics - retrieval and generation.
 
 ### Retrieval Experiments
-For the main retrieval experiments I performed grid search over ~50 combinations of chunking, embedding, enrichment and reranking methods.
+For the main retrieval experiments I performed **grid search** over **~50 combinations of chunking, embedding, enrichment and reranking methods**.
 
-Mergers and Acquisitions contracts from the CUAD dataset (ultimately from EDGAR the SEC's online database) were used as the corpus. 
+Mergers and Acquisitions contracts from the **CUAD dataset** (ultimately from EDGAR the SEC's online database) were used as the corpus. 
 
-Documents were chunked at various lengths (from 64 to 1024 tokens, mainly 256 tokens) by various methods (fixed token number, semantically, and by sentence/paragraph boundaries).
+Documents were **chunked** at various lengths (**from 64 to 1024 tokens, mainly 256**) by various methods (fixed token number, semantically, and by sentence/paragraph boundaries).
 
-The chunks were then passed to cloud LLMs (GPT-4o-mini, Gemini-Flash-2.5) for synthetic question generation (direct, indirect and informal questions that a chunk answers), as well as for summaries and atomic statements.
+The chunks were then passed to cloud LLMs (GPT-4o-mini, Gemini-Flash-2.5) for **synthetic question generation** (direct, indirect and informal questions that a chunk answers), as well as for summaries and atomic statements.
 
-Various combinations of chunk content, and enrichments: description (cleaned name of contract e.g. "Siemens Distribution Agreement"), summary, atomics etc. were assembled.
+Various combinations of chunk **content**, and **enrichments**: description (cleaned name of contract e.g. "Siemens Distribution Agreement"), summary, atomics etc. were assembled.
 
-These enriched chunks were then embedded by 3 embedders- MiniLM (23M parameters), GTE-ModernBERT (100M) and embeddingGemma (300M). 
+These enriched chunks were then **embedded by 3 embedders**- **MiniLM** (23M parameters), **GTE-ModernBERT** (100M) and **embeddingGemma** (300M). 
 
 The embedded chunks were then queried
 
