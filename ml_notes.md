@@ -13,6 +13,7 @@
 
 ## Core Retrieval Experiments
 These experiments evaluate the main retrieval pipeline: chunking, embedding, retrieval method, reranking, and retrieval budget. Each plot is followed by its explanation.
+
 ### Chunking, embedding and enrichment
 
 ![Budget retrieval metrics by method](ml_images/results/budget_retrieval_metrics_by_method.png)
@@ -36,13 +37,17 @@ Removing the description (contains the name of the Document/Contract) or replaci
 ### Reranking
 
 ![Reranker](ml_images/results/reranker_budget_metrics_by_condition.png)
-Top-left plot is most important. It shows that for both Hybrid and BM25/Keyword search, reranknig significantly improves recall. This was the most notable finding in all research performed- that rerankers are extremely powerful. Note that the least powerful embedder-  the square, miniLM, with reranking is far better than all of the embedders without reranking, both for hybrid and semantic search.
+Top-left plot is most important. It shows that for both Hybrid and BM25/Keyword search, reranknig significantly improves recall. This was the most notable finding in all research performed- that rerankers are extremely powerful. Note that the least powerful embedder-  the square, miniLM (22M), with reranking (22M) is far better than all of the embedders (e.g. Gemma 300M) without reranking, both for hybrid and semantic search. 
+
+Without reranking (thin lines) keyword > hybrid > semantic search. Though with reranking hybrid and keywords are equivalent, and optimal.
 
 ![Reranker budget recall by method](ml_images/results/reranker_budget_recall_by_method.png)
 
-
+All search methods were improved by reranker but primarily keyword and hybrid, perhaps since they found the best chunks but didn't rank them to the top by default.
 
 ![Reranker budget delta](ml_images/results/reranker_budget_reranker_delta.png)
+
+Top-left: reranking caused the highest gains for hybrid, followed by keyword search. Semantic search shows small(er) gains with reranking (in this batch of experiments at least). This suggests that hybrid had a lot of useful chunks that were not ranked correctly- that the reranker was then able to place at the top (in the top k=5).
 
 
 ![Gemma rerank](ml_images/results/gemmarerank.png)
@@ -59,6 +64,8 @@ These experiments investigate whether the accuracy of the LLM's answer changes d
 | ![SWAMP evaluation plot](ml_images/results/swamp_eval_plot.png) | With more chunks - the LLM gets "swamped" and accuracy decreases, mainly due to abstentions e.g. "the answer is not provided in the given context". |
 | ![Primacy boost](ml_images/results/primacyboost.png) | A modest primacy boost was found, moreso than the classic U shaped lost-in-the middle-curve. (i.e. The model is more accurate with the gold chunk at the start) |
 
+
+## References
 
 
 
