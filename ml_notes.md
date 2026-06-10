@@ -21,7 +21,6 @@ These experiments evaluate the main retrieval pipeline: chunking, embedding, ret
 | ![Fixed 256-token surface metrics by style](ml_images/results/fixed_256_surface_metrics_by_style.png) |  |
 | ![Reranker](ml_images/results/reranker.png) |  |
 | ![Reranker budget recall by method](ml_images/results/reranker_budget_recall_by_method.png) |  |
-| ![Reranker budget recall, Gemma only](ml_images/results/reranker_budget_recall_gemma_only.png) |  |
 | ![Reranker budget delta](ml_images/results/reranker_budget_reranker_delta.png) | |
 | ![Gemma rerank](ml_images/results/gemmarerank.png) | |
 | ![Token-normalized scores](ml_images/results/token_normalized_scores_all.png) | |
