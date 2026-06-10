@@ -24,7 +24,7 @@ Various combinations of chunk **content**, and **enrichments**: description (cle
 These enriched chunks were then embedded by **3 embedders**- **MiniLM** (23M parameters), **GTE-ModernBERT** (100M) and **embeddingGemma** (300M). 
 
 Embedded questions were used to retrieve chunks from the corpus, by 3 methods- **BM25/keyword**, **semantic** (_cosine/normalized dot product_), **hybrid** (_reciprocal rank fusion_).
-The retrieved chunks, question and ground truth were sent to cloud LLMs for **LLM-as-Judge** evaluation (_recall, precision, hit rate etc._) - in essence judging "how relevant are the retrieved chunks to the question". This was done for all combinations of chunking, embedding and enrichment methods.
+The retrieved chunks, question and ground truth were sent to cloud LLMs for **LLM-as-Judge** evaluation (_recall, precision, hit rate etc._) - in essence judging "_how relevant are the retrieved chunks to the question_". This was done for all combinations of chunking, embedding and enrichment methods.
 
 Further testing was performed with **reranking** using the **MiniLM Marco** (22M) **cross-encoder**. The first 50 chunks were retrieved and reranked with the reranker, then the top 5 reranked chunks were returned.
 
