@@ -1,7 +1,5 @@
 # Genie
 
-## Project complete, Demo - Work-in-progress
-
 Genie is a desktop Retrieval Augmented Generation (RAG) app for locally querying your documents with AI.  
 Welcome to my final year project showcase!
 
@@ -13,9 +11,12 @@ Welcome to my final year project showcase!
 
 ![Genie hero screenshot](app_images/hero.png)
 
-## Overview
+## Machine Learning Research
 
-## Screenshots
+As well as building Genie, I also performed Machine Learning research to optimize the pipeline and hyperparameters.
+[Please see ml_notes.md](ml_notes.md)
+
+## App Screenshots
 
 <table border="0">
   <tr>
