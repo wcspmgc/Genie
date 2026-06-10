@@ -13,6 +13,8 @@ Welcome to my final year project showcase!
 
 ![Genie hero screenshot](app_images/hero.png)
 
+## Overview
+
 ## Screenshots
 
 <table border="0">
@@ -37,3 +39,43 @@ Welcome to my final year project showcase!
     <td width="50%"><img src="app_images/appoutline.png" alt="App outline screen"></td>
   </tr>
 </table>
+
+## Features
+- Chat with local LLM using Retrieval Augmented Generation (RAG)
+- Upload and index documents
+- Search documents using semantic, keyword (BM25), or hybrid retrieval
+- View retrieved source chunks for transparency
+- Configure retrieval and inference settings, including:
+  - LLM model (`.gguf`)
+  - context window
+  - temperature
+  - retrieval method
+  - number of retrieved chunks
+  - chunk size
+  - reranking options
+- Customize Interface
+  - light and dark mode
+  - font size
+  - background image
+
+## Technical summary
+
+## Tech Stack
+
+**Frontend**
+- Electron
+- React
+- Material UI
+- Vite
+
+**Backend/AI**
+- llama.cpp/llama-cpp-python
+- sentence-transformers/SBERT
+- MiniLM Embeddings
+- LanceDB (vector database)
+
+**Languages**
+- JavaScript
+- Python
+
+## Motivation
