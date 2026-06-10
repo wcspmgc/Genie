@@ -3,9 +3,9 @@
 ## Overview
 
 ## Testing pipeline diagrams
-**Retrieval - effect of chunking/embedding/enrichment methods**
+### Retrieval - effect of chunking/embedding/enrichment methods
 ![Chunk/embed/enrich_architecture](ml_images/chunking.png)
-**Generation - effect of gold chunk position**
+### Generation - effect of gold chunk position
 ![Generation_architecture](ml_images/retrievalcoloured.png)
 ## Results
 
