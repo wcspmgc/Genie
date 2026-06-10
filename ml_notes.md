@@ -24,16 +24,16 @@ Various combinations of chunk **content**, and **enrichments**: description (cle
 These enriched chunks were then embedded by **3 embedders**- **MiniLM** (23M parameters), **GTE-ModernBERT** (100M) and **embeddingGemma** (300M). 
 
 Embedded questions were used to retrieve chunks from the corpus, by 3 methods- **BM25/keyword**, **semantic** (_cosine/normalized dot product_), **hybrid** (_reciprocal rank fusion_).
-The retrieved chunks, question and ground truth were sent to cloud LLMs for **LLM-as-Judge** evaluation (_recall, precision, hitrate _etc.) - in essence judging "how relevant are the retrieved chunks to the question". This was done for all combinations of chunking, embedding and enrichment methods.
+The retrieved chunks, question and ground truth were sent to cloud LLMs for **LLM-as-Judge** evaluation (_recall, precision, hit rate etc._) - in essence judging "how relevant are the retrieved chunks to the question". This was done for all combinations of chunking, embedding and enrichment methods.
 
 Further testing was performed with reranking using the MiniLM Marco (22M) cross-encoder. The first 50 chunks were retrieved and reranked with the reranker, then the top 5 reranked chunks were returned.
 
-Reranking proved to be extremely effective, for example, a 22M parameter Embedder (MiniLM) plus a 22M parameter cross-encoder (MiniLM-Marco) far outperformed the 300M parameter embedder embeddingGemma without reranking. So adding a reranker is a more effective use of resources than enlarging your embedder.
+Reranking proved to be extremely effective, for example, a 22M parameter embedder (MiniLM) plus a 22M parameter cross-encoder (MiniLM-Marco) far outperformed the 300M parameter embedder embeddingGemma without reranking. So adding a reranker is a more effective use of resources than enlarging your embedder.
 
-Why is using a cross-encoder so much more effective than only using a biencoder pipeline?
-A **cross encoder** is a sequence comparison architecture where sequences are concatenated then compared with self-attention. By contrast, in a bi-encoder architecture, both sequences are embedded to a single vector each, which are then compared via cosine (=length normalized dot). 
+Why is using a cross-encoder so much more effective than only using a bi-encoder pipeline?
+Cross-encoders compare via self-attention with the concatenated sequence (early interaction); Bi-encoders embed each sequence then compare the resultant vectors (late interaction).
 
-**Cross-encoders** perform fine grained **token to token** ($n^2$) **interaction**, between query and chunk/document (**early interaction**),  whereas bi-encoders compress both sequences then compare the resultant vectors (**late interaction**). Cross encoders improve upon the inferior initial biencoder rankings. So some important information seems to be taken into account in cross-encoding (e.g. how each token affects the meaning of each other) that is lost when compressing (e.g. to a single _768 dimension fp32 vector_ each).
+Cross encoders improve upon the inferior initial bi-encoder rankings. So some important information seems to be taken into account in cross-encoding (i.e. token-to-token interactions) that is lost when compressing (e.g. to a single _768 dimension fp32 vector_ each).
 
 _For further results see below.
 _
@@ -65,7 +65,7 @@ Normalized for chunk size (i.e. for the same token budget broken up by different
 
 ![Chunk size metrics by embedder](ml_images/results/chunk_size_metrics_by_embedder.png)
 
-EmbeddingGemma300M was found to be the best embedder, followed by miniLM and GTE-modertBERT.
+EmbeddingGemma300M was found to be the best embedder, followed by miniLM and GTE-ModertBERT.
 
 ![Fixed 256-token surface metrics by style](ml_images/results/fixed_256_surface_metrics_by_style.png)
 
@@ -74,13 +74,13 @@ Removing the description (contains the name of the Document/Contract) or replaci
 ### Reranking
 
 ![Reranker](ml_images/results/reranker_budget_metrics_by_condition.png)
-Top-left plot is most important. It shows that for both Hybrid and BM25/Keyword search, reranknig significantly improves recall. This was the most notable finding in all research performed- that rerankers are extremely powerful. Note that the least powerful embedder-  the square, miniLM (22M), with reranking (22M) is far better than all of the embedders (e.g. Gemma 300M) without reranking, both for hybrid and semantic search. 
+Top-left plot is most important. It shows that for both Hybrid and BM25/Keyword search, reranking significantly improves recall. This was the most notable finding in all research performed- that rerankers are extremely powerful. Note that the least powerful embedder-  the square, miniLM (22M), with reranking (22M) is far better than all of the embedders (e.g. Gemma 300M) without reranking, both for hybrid and semantic search. 
 
 Without reranking (thin lines) keyword > hybrid > semantic search. Though with reranking hybrid and keywords are equivalent, and optimal.
 
 ![Reranker budget recall by method](ml_images/results/reranker_budget_recall_by_method.png)
 
-All search methods were improved by reranker but primarily keyword and hybrid, perhaps since they found the best chunks but didn't rank them to the top by default.
+All search methods were improved by reranker but primarily keyword and hybrid, perhaps since they found relevant chunks but did not rank them at the top by default.
 
 ![Reranker budget delta](ml_images/results/reranker_budget_reranker_delta.png)
 
