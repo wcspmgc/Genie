@@ -13,17 +13,31 @@
 
 These experiments evaluate the main retrieval pipeline: chunking, embedding, retrieval method, reranking, and retrieval budget.
 
-| Plot | Description |
-|---|---|
-| ![Budget retrieval metrics by method](ml_images/results/budget_retrieval_metrics_by_method.png) | Top left plot shows that for all chunk sizes- increasing the token budget improves recall, i.e. more chunks are more likely to contain the answer. |
-| ![Chunk size metrics across methods](ml_images/results/chunk_size_metrics_all_methods.png) | Unnormalized by chunk size, unsurprisingly the largest chunk size (1024 tokens) performs best. |
-| ![Chunk size metrics by embedder](ml_images/results/chunk_size_metrics_by_embedder.png) | EmbeddingGemma300M was found to be the best bembedder, followed by miniLM and GTE-modertBERT. |
-| ![Fixed 256-token surface metrics by style](ml_images/results/fixed_256_surface_metrics_by_style.png) | Removing the description (contains the name of the Document/Contract) or replacing the text with atomic statements, questions or summary - actually did not reduce performance much. This implies that the content of the chunk is very similar in embedding latent space to its summary, questions about it, and its atomic statement form. Also ablating (removing) the name did not actually decrease performance much so the embedder judged chunks well just via content without even knowing which contract the chunk came from. |
-| ![Reranker](ml_images/results/reranker.png) |  |
-| ![Reranker budget recall by method](ml_images/results/reranker_budget_recall_by_method.png) |  |
-| ![Reranker budget delta](ml_images/results/reranker_budget_reranker_delta.png) | |
-| ![Gemma rerank](ml_images/results/gemmarerank.png) | |
-| ![Token-normalized scores](ml_images/results/token_normalized_scores_all.png) | |
+![Budget retrieval metrics by method](ml_images/results/budget_retrieval_metrics_by_method.png)
+
+Top left plot shows that for all chunk sizes- increasing the token budget improves recall, i.e. more chunks are more likely to contain the answer.
+
+![Chunk size metrics across methods](ml_images/results/chunk_size_metrics_all_methods.png)
+
+Unnormalized by chunk size, unsurprisingly the largest chunk size (1024 tokens) performs best.
+
+![Chunk size metrics by embedder](ml_images/results/chunk_size_metrics_by_embedder.png)
+
+EmbeddingGemma300M was found to be the best bembedder, followed by miniLM and GTE-modertBERT.
+
+![Fixed 256-token surface metrics by style](ml_images/results/fixed_256_surface_metrics_by_style.png)
+
+Removing the description (contains the name of the Document/Contract) or replacing the text with atomic statements, questions or summary - actually did not reduce performance much. This implies that the content of the chunk is very similar in embedding latent space to its summary, questions about it, and its atomic statement form. Also ablating (removing) the name did not actually decrease performance much so the embedder judged chunks well just via content without even knowing which contract the chunk came from.
+
+![Reranker](ml_images/results/reranker.png)
+
+![Reranker budget recall by method](ml_images/results/reranker_budget_recall_by_method.png)
+
+![Reranker budget delta](ml_images/results/reranker_budget_reranker_delta.png)
+
+![Gemma rerank](ml_images/results/gemmarerank.png)
+
+![Token-normalized scores](ml_images/results/token_normalized_scores_all.png)
 
 ### Lost-in-the-Middle / Context Position Experiments
 
