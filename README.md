@@ -33,7 +33,7 @@ Welcome to my final year project showcase!
     <td width="50%"><img src="app_images/readme_grid/loginlight.png" alt="Login screen"></td>
   </tr>
   <tr>
-    <td width="50%"><img src="app_images/cybersecurity.png" alt="Cybersecurity screen"></td>
+    <td ><img src="app_images/cybersecurity.png" alt="Cybersecurity screen" height=250></td>
     <td width="50%"><img src="app_images/appoutline.png" alt="App outline screen"></td>
   </tr>
 </table>
