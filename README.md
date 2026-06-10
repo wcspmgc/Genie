@@ -79,3 +79,10 @@ Welcome to my final year project showcase!
 - Python
 
 ## Motivation
+
+There are two main reasons to run RAG and LLM chat locally: confidentiality/compliance, and offline or air-gapped environments.
+
+Many industries handle sensitive documents that cannot simply be sent to external cloud APIs. This includes legal work, where documents may be protected by legal professional privilege, and healthcare, where patient information is subject to strict confidentiality requirements.
+Other sectors, such as defence, advanced engineering, and critical infrastructure, may also use offline or air-gapped networks. In those environments, teams still need to search and query large document collections, but the system must run locally without relying on an external AI service.
+
+
