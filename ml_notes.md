@@ -67,6 +67,50 @@ These experiments investigate whether the accuracy of the LLM's answer changes d
 
 ## References
 
+[CUAD Main Page](https://www.atticusprojectai.org/cuad) | [The Atticus Project huggingface_dataset](https://huggingface.co/datasets/theatticusproject/cuad) [[2103.06268] CUAD: An Expert-Annotated NLP Dataset for Legal Contract Review](https://arxiv.org/abs/2103.06268) Dataset.
 
+[[2309.15217] Ragas: Automated Evaluation of Retrieval Augmented Generation](https://arxiv.org/abs/2309.15217) 
+This formalizes and validates the Synthetic Question Generation and LLM-as-judge.
+
+[[2311.09476] ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems](https://arxiv.org/abs/2311.09476) ARES (Automatic RAG Evaluation System)- also shows use of synthetic question generation and LLM-as-judge.
+
+[[2307.03172] Lost in the Middle: How Language Models Use Long Contexts](https://arxiv.org/abs/2307.03172) 
+This suggests that LLMs may lose accuracy when the relevant chunks are in the middle 
+of the context. I found more of a “first-position boost” than the classic U-shaped lost-in
+the middle curve. 
+
+[[2005.11401] Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401) 
+The original RAG paper. 
+
+[[1908.10084] Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084) 
+The paper demonstrates that finding the most similar pair of sentences in a collection of 
+10,000 sentences took 65 hours using a BERT Cross-encoder (because every possible 
+pair had to be fed into the model). By switching to a Bi-encoder (SBERT), the time was 
+reduced to about 5 seconds. However cross-encoders scored slightly (3-4 points) 
+better. 
+
+[[1905.01969] Poly-encoders: Transformer Architectures and Pre-training Strategies for Fast and Accurate Multi-sentence Scoring](https://arxiv.org/abs/1905.01969) 
+The paper points out that because Bi-encoders independently encode texts, document 
+embeddings can be cached, allowing for fast dot-product comparisons. In contrast, 
+Cross-encoders are shown to be two orders of magnitude slower at inference time 
+because caching is impossible.
+The authors state that Cross-encoders "attain much higher accuracies than their 
+counterparts, Bi-encoders" because they concatenate the context and candidate, 
+allowing for rich, fine-grained self-attention between every word in the query and 
+every word in the document.  
+
+[[1911.03814] Scalable Zero-shot Entity Linking with Dense Entity Retrieval](https://arxiv.org/abs/1911.03814) 
+Introduces a two-stage algorithm. Proves that a Bi-encoder is incredibly fast for first
+stage retrieval (e.g., searching 5.9 million candidates in just 2 milliseconds using 
+nearest neighbor search). However, it proves that you need the "more expensive cross
+encoder" for the second stage to accurately re-rank the candidates and achieve state
+of-the-art accuracy, explicitly highlighting the accuracy-speed tradeoff. This validates 
+the 2-stage: retrieve via embeddings, then rerank a top-k subset approach. 
+
+[[2306.05685] Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena](https://arxiv.org/abs/2306.05685) 
+This shows that strong LLM judges such as GPT-4 achieve over 80% agreement with 
+human preferences, the same level of agreement as occurs between human judges. 
+This therefore validates that LLM-as-judge as a scalable and accurate way to 
+approximate human judgments that are otherwise expensive to obtain. 
 
 
