@@ -60,6 +60,10 @@ Welcome to my final year project showcase!
 
 ## Technical summary
 
+Genie is a local-first RAG desktop app. Uploaded documents are split into chunks, embedded with MiniLM/SBERT, and stored in LanceDB. At query time, relevant chunks are retrieved using semantic, keyword (BM25), or hybrid search, optionally reranked with an MS MARCO MiniLM cross-encoder, and passed to a local GGUF language model through llama.cpp / llama-cpp-python.
+
+Document ingestion, retrieval, reranking, and answer generation all run on the user's machine.
+
 ## Tech Stack
 
 **Frontend**
