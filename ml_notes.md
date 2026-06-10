@@ -13,12 +13,12 @@
 
 These experiments evaluate the main retrieval pipeline: chunking, embedding, retrieval method, reranking, and retrieval budget.
 
-| Figure | Description |
+| Plot | Description |
 |---|---|
-| ![Budget retrieval metrics by method](ml_images/results/budget_retrieval_metrics_by_method.png) |  |
-| ![Chunk size metrics across methods](ml_images/results/chunk_size_metrics_all_methods.png) | |
-| ![Chunk size metrics by embedder](ml_images/results/chunk_size_metrics_by_embedder.png) | |
-| ![Fixed 256-token surface metrics by style](ml_images/results/fixed_256_surface_metrics_by_style.png) |  |
+| ![Budget retrieval metrics by method](ml_images/results/budget_retrieval_metrics_by_method.png) | Top left plot shows that for all chunk sizes- increasing the token budget improves recall, i.e. more chunks are more likely to contain the answer. |
+| ![Chunk size metrics across methods](ml_images/results/chunk_size_metrics_all_methods.png) | Unnormalized by chunk size, unsurprisingly the largest chunk size (1024 tokens) performs best. |
+| ![Chunk size metrics by embedder](ml_images/results/chunk_size_metrics_by_embedder.png) | EmbeddingGemma300M was found to be the best bembedder, followed by miniLM and GTE-modertBERT. |
+| ![Fixed 256-token surface metrics by style](ml_images/results/fixed_256_surface_metrics_by_style.png) | Removing the description (contains the name of the Document/Contract) or replacing the text with atomic statements, questions or summary - actually did not reduce performance much. This implies that the content of the chunk is very similar in embedding latent space to its summary, questions about it, and its atomic statement form. Also ablating (removing) the name did not actually decrease performance much so the embedder judged chunks well just via content without even knowing which contract the chunk came from. |
 | ![Reranker](ml_images/results/reranker.png) |  |
 | ![Reranker budget recall by method](ml_images/results/reranker_budget_recall_by_method.png) |  |
 | ![Reranker budget delta](ml_images/results/reranker_budget_reranker_delta.png) | |
@@ -29,7 +29,7 @@ These experiments evaluate the main retrieval pipeline: chunking, embedding, ret
 
 These experiments investigate whether answer quality changes depending on where relevant retrieved chunks are placed in the model context.
 
-| Figure | Description |
+| Plot | Description |
 |---|---|
 | ![SWAMP evaluation plot](ml_images/results/swamp_eval_plot.png) | With more chunks - the LLM gets "swamped" and accuracy decreases, mainly due to abstentions e.g. "the answer is not provided in the given context". |
 | ![Primacy boost](ml_images/results/primacyboost.png) | A modest primacy boost (the model is more accurate with the gold chunk at the start) was found, moreso than the classic U shaped lost in the middle curve. |
