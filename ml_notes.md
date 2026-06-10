@@ -2,7 +2,9 @@
 
 ## TLDR Conclusions
 
-**Rerankers** are highly **effective**, more important than differences among embedders, enrichments have little effect. **Two stage bi-encoder, cross-encoder pipeline** strongly validated.
+**Rerankers** are highly **effective**, more important than differences among embedders, enrichments have little effect. 
+
+**Two stage bi-encoder, cross-encoder pipeline** strongly validated.
 
 Minor **swamping** and **primacy boost** observed with respect to LLM context.
 
