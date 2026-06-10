@@ -35,8 +35,8 @@ Cross-encoders compare via self-attention with the concatenated sequence (early 
 
 Cross encoders improve upon the inferior initial bi-encoder rankings. So some important information seems to be taken into account in cross-encoding (i.e. token-to-token interactions) that is lost when compressing (e.g. to a single _768 dimension fp32 vector_ each).
 
-_For further results see below.
-_
+_For further results see below._
+
 ### Generation Experiments
 For the secondary generation experiments, I tested the effect of the number of chunks and the position of relevant/"gold" chunks in the model's context. I found that, expectedly, as you fill an LLM's context with more chunks- its accuracy decreases. Additionally, I found a primacy boost- the LLM was better able to find the relevant information from its context when the gold chunk was right at the beginning, rather than in the middle or at the end. This contrasts with the expected U-shaped lost in the middle curve.
 
