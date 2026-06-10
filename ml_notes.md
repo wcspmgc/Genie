@@ -29,7 +29,7 @@ EmbeddingGemma300M was found to be the best bembedder, followed by miniLM and GT
 
 Removing the description (contains the name of the Document/Contract) or replacing the text with atomic statements, questions or summary - actually did not reduce performance much. This implies that the content of the chunk is very similar in embedding latent space to its summary, questions about it, and its atomic statement form. Also ablating (removing) the name did not actually decrease performance much so the embedder judged chunks well just via content without even knowing which contract the chunk came from.
 
-![Reranker](ml_images/results/reranker.png)
+![Reranker](ml_images/results/reranker_budget_metrics_by_condition.png)
 
 ![Reranker budget recall by method](ml_images/results/reranker_budget_recall_by_method.png)
 
