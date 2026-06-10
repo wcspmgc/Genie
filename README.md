@@ -13,8 +13,9 @@ Welcome to my final year project showcase!
 
 ## Machine Learning Research
 
-As well as building Genie, I also performed Machine Learning research to optimize the retrieval and generation pipelines and hyperparameters: 
-[Please see Machine Learning Research Summary here](ml_notes.md)
+As well as building Genie, I also performed Machine Learning research to optimize the retrieval and generation pipelines and hyperparameters.
+The experiments tested chunk sizes, embedding models, enrichment methods, retrieval methods, reranking, retrieval budgets, and LLM context-position effects.
+[Read Machine Learning Research Summary](ml_notes.md)
 
 ## App Screenshots
 
@@ -54,7 +55,7 @@ As well as building Genie, I also performed Machine Learning research to optimiz
   - number of retrieved chunks
   - chunk size
   - reranking options
-- Customize Interface
+- Customize interface
   - light and dark mode
   - font size
   - background image
@@ -91,5 +92,5 @@ Many industries handle sensitive documents that cannot simply be sent to externa
 
 Other sectors, such as defence, advanced engineering, and critical infrastructure, may also use offline or air-gapped networks. In those environments, teams still need to search and query large document collections, but the system must run locally without relying on an external AI service.
 
-[Please see machine learning findings here.md](ml_notes.md)
+[Read Machine Learning Research Summary](ml_notes.md)
 
