@@ -17,14 +17,25 @@ Mergers and Acquisitions contracts from the **CUAD dataset** (ultimately from ED
 
 Documents were **chunked** at various lengths (**from 64 to 1024 tokens, mainly 256**) by various methods (fixed token number, semantically, and by sentence/paragraph boundaries).
 
-The chunks were then passed to cloud LLMs (GPT-4o-mini, Gemini-Flash-2.5) for **synthetic question generation** (direct, indirect and informal questions that a chunk answers), as well as for summaries and atomic statements.
+The chunks were then passed to cloud LLMs (_GPT-4o-mini, Gemini-Flash-2.5_) for **synthetic question generation** (direct, indirect and informal questions that a chunk answers), as well as for summaries and atomic statements.
 
 Various combinations of chunk **content**, and **enrichments**: description (cleaned name of contract e.g. "Siemens Distribution Agreement"), summary, atomics etc. were assembled.
 
-These enriched chunks were then **embedded by 3 embedders**- **MiniLM** (23M parameters), **GTE-ModernBERT** (100M) and **embeddingGemma** (300M). 
+These enriched chunks were then embedded by **3 embedders**- **MiniLM** (23M parameters), **GTE-ModernBERT** (100M) and **embeddingGemma** (300M). 
 
-The embedded chunks were then queried
+Embedded questions were used to retrieve chunks from the corpus, by 3 methods- **BM25/keyword**, **semantic** (_cosine/normalized dot product_), **hybrid** (_reciprocal rank fusion_).
+The retrieved chunks, question and ground truth were sent to cloud LLMs for **LLM-as-Judge** evaluation (_recall, precision, hitrate _etc.) - in essence judging "how relevant are the retrieved chunks to the question". This was done for all combinations of chunking, embedding and enrichment methods.
 
+Further testing was performed with reranking using the MiniLM Marco (22M) cross-encoder. The first 50 chunks were retrieved and reranked with the reranker, then the top 5 reranked chunks were returned.
+
+Reranking proved to be extremely effective, for example, a 22M parameter Embedder (MiniLM) plus a 22M parameter cross-encoder (MiniLM-Marco) far outperformed the 300M parameter embedder embeddingGemma without reranking. So adding a reranker is a more effective use of resources than enlarging your embedder.
+
+Why is using a cross-encoder so much more effective than only using a biencoder pipeline?
+A cross encoder is a sequence comparison architecture where sequences are concatenated then compared with self-attention. By contrast, in a biencoder architecture, both sequences are embedded to a single vector each, which are then compared via cosine (=length normalized dot). 
+
+So cross encoders perform fine grained token to token ($n^2$) interaction, between query and chunk/document (early interaction),  whereas bi-encoders compress both sequences then compare the resultant vectors (late interaction). Cross encoders improve upon the inferior initial biencoder rankings. So some important information seems to be taken into account in cross-encoding (e.g. how each token affects the meaning of each other) that is lost when compressing (e.g. to a single 768 dimension fp32 vector each).
+
+For further results see below.
 
 ### Generation Experiments
 For the secondary generation experiments, I tested the effect of the number of chunks and the position of relevant/"gold" chunks in the model's context. I found that, expectedly, as you fill an LLM's context with more chunks- its accuracy decreases. Additionally, I found a primacy boost- the LLM was better able to find the relevant information from its context when the gold chunk was right at the beginning, rather than in the middle or at the end. This contrasts with the expected U-shaped lost in the middle curve.
