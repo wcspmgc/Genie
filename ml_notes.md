@@ -17,16 +17,16 @@ Mergers and Acquisitions contracts from the **CUAD dataset** (ultimately from ED
 
 Documents were **chunked** at various lengths (**from 64 to 1024 tokens, most often 256**) by various methods (fixed token number, semantically, and by sentence/paragraph boundaries).
 
-The chunks were then passed to cloud LLMs (_GPT-4o-mini, Gemini-Flash-2.5_) for **synthetic question generation** (direct, indirect and informal questions that a chunk answers), as well as for summaries and atomic statements.
+The chunks were then passed to **cloud LLMs** (_GPT-4o-mini, Gemini-Flash-2.5_) for **synthetic question generation** (direct, indirect and informal questions that a chunk answers), as well as for summaries and atomic statements.
 
-Various combinations of chunk **content**, and **enrichments**: description (cleaned name of contract e.g. "Siemens Distribution Agreement"), summary, atomics etc. were assembled.
+Various combinations of chunk **content**, and **enrichments**: description (cleaned name of contract e.g. "_Siemens Distribution Agreement_"), summary, atomics etc. were assembled.
 
 These enriched chunks were then embedded by **3 embedders**- **MiniLM** (23M parameters), **GTE-ModernBERT** (100M) and **embeddingGemma** (300M). 
 
 Embedded questions were used to retrieve chunks from the corpus, by 3 methods- **BM25/keyword**, **semantic** (_cosine/normalized dot product_), **hybrid** (_reciprocal rank fusion_).
 The retrieved chunks, question and ground truth were sent to cloud LLMs for **LLM-as-Judge** evaluation (_recall, precision, hit rate etc._) - in essence judging "how relevant are the retrieved chunks to the question". This was done for all combinations of chunking, embedding and enrichment methods.
 
-Further testing was performed with reranking using the MiniLM Marco (22M) cross-encoder. The first 50 chunks were retrieved and reranked with the reranker, then the top 5 reranked chunks were returned.
+Further testing was performed with **reranking** using the **MiniLM Marco** (22M) **cross-encoder**. The first 50 chunks were retrieved and reranked with the reranker, then the top 5 reranked chunks were returned.
 
 Reranking proved to be extremely effective, for example, a 22M parameter embedder (MiniLM) plus a 22M parameter cross-encoder (MiniLM-Marco) far outperformed the 300M parameter embedder embeddingGemma without reranking. So adding a reranker is a more effective use of resources than enlarging your embedder.
 
