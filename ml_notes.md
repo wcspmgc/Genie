@@ -44,12 +44,12 @@ Removing the description (contains the name of the Document/Contract) or replaci
 
 ## Lost-in-the-Middle / Context Position Experiments
 
-These experiments investigate whether the quality of the answer changes depending on where relevant retrieved chunks are placed in the model context.
-
+These experiments investigate whether the accuracy of the LLM's answer changes depending on where the "gold" relevant chunk is placed in its context. (_see earlier diagram for pipeline_)
+ 
 | Plot | Description |
 |---|---|
 | ![SWAMP evaluation plot](ml_images/results/swamp_eval_plot.png) | With more chunks - the LLM gets "swamped" and accuracy decreases, mainly due to abstentions e.g. "the answer is not provided in the given context". |
-| ![Primacy boost](ml_images/results/primacyboost.png) | A modest primacy boost (the model is more accurate with the gold chunk at the start) was found, moreso than the classic U shaped lost-in-the middle-curve. |
+| ![Primacy boost](ml_images/results/primacyboost.png) | A modest primacy boost was found, moreso than the classic U shaped lost-in-the middle-curve. (i.e. The model is more accurate with the gold chunk at the start) |
 
 
 
